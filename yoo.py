@@ -91,7 +91,7 @@ except KeyError:
 import uproot
 import awkward as ak
 
-file = uproot.open("newfilee.root")
+file = uproot.open("newfile.root")
 tree = file["events"]
 
 # Load MCParticle PDG IDs
