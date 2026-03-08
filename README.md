@@ -1,8 +1,8 @@
 # Simulation Validation Task (Please read this Readme_Instructions)
 
-The data for the given simulation task is stored in **`newfile.root`**. ALL RESULTS ARE BASED ON THIS FILE DATA ONLY
-This file is provided so that the simulation **does not need to be rerun**, allowing direct experimentation and validation.
-A point_cloud_dtaset is already made from this file but you can recheck
+The output of the given simulation task is stored in **`newfile.root`**.
+For Task Specific code - yoo.py   For Proposal Code - trcheck.ipynb. 
+This root file has been provided so that user **does not need to be rerun heavy test**.
 ---
 
 ## Setup Instructions
