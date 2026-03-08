@@ -13,7 +13,7 @@ print("Hits in event 0:", len(energies_per_event[0]))
 print("First 10 hit energies in event 0:", energies_per_event[0])
 print(sum(energies_per_event[0]))
 print("Number of events:", num_events)
-for i in range(5):  # first 5 events
+for i in range(5):  # Personal Check and understanding what is in the file
     hits = energies_per_event[i]
     print(f"Event {i}: number of ECal barrel hits = {len(hits)}")
 
@@ -28,17 +28,17 @@ import matplotlib.pyplot as plt
 
 tree = file["events"]
 
-# Get the ECalBarrel hit energies
+# Getting the ECalBarrel hit energies
 
 branch_name = "ECalBarrelCollection/ECalBarrelCollection.energy"
 try:
     # Load the energy data as a numpy array
-    # We use .flatten() because each event contains a list of hits
+
     energies = tree[branch_name].array(library="np")
     all_hits = np.concatenate(energies)
     event_totals = [np.sum(e) for e in energies]
     mean_val2 = np.mean(event_totals)
-    # 4. Calculate Statistics
+    # 4. Calculate Statistics (TASK REQ)
     entries = len(all_hits)
     mean_val = np.mean(all_hits)
     std_val = np.std(all_hits)
@@ -51,7 +51,7 @@ try:
     print(f"Standard Deviation:   {std_val:.6f} GeV")
     print(f"Standard Deviation wrt events:   {std_dev2:.6f} GeV")
 
-    # Count events where the energy array is empty
+    # Count events where the energy array is empty (USED in other test but thought it is useful here)
     zero_hit_events = sum(1 for e in energies if len(e) == 0)
     print(f"Events with zero hits: {zero_hit_events} out of 100")
     vtx_x = tree["MCParticles/MCParticles.vertex.x"].array(library="np")
@@ -62,7 +62,7 @@ try:
     p_z = tree["MCParticles/MCParticles.momentum.z"].array(library="np")[0][0]
     print(f"Momentum (Px, Py, Pz): ({p_x:.2f}, {p_y:.2f}, {p_z:.2f})")
 
-# Print the starting position of the first particle in the first event
+# Print the starting position of the first particle in the first event(Gun Position check)
     print(f"Gun Position (X, Y, Z): ({vtx_x[0][0]}, {vtx_y[0][0]}, {vtx_z[0][0]})")
     print(file.keys()) 
 
@@ -75,7 +75,7 @@ try:
     plt.ylabel("Number of Hits")
     plt.grid(axis='y', alpha=0.3)
     
-    # Add stats box to the plot
+    
     stats_text = f"Entries: {entries}\nMean: {mean_val:.4f}\nStd Dev: {std_val:.4f}"
     plt.text(0.95, 0.95, stats_text, transform=plt.gca().transAxes, 
              verticalalignment='top', horizontalalignment='right', 
@@ -107,6 +107,6 @@ pdg_ids = tree["MCParticles/MCParticles.PDG"].array()
 primary_pdgs = []
 
 for s, p in zip(status, pdg_ids):
-    primary_pdgs.extend(p[s == 1])  # generatorStatus == 1 means primary
+    primary_pdgs.extend(p[s == 1])  
 
 print("Primary particle PDGs:", set(primary_pdgs))
