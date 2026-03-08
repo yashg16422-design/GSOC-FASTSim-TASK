@@ -88,10 +88,8 @@ except KeyError:
     print("Available branches are:")
     print(tree.keys())
 # print(file.keys())
-import uproot
-import awkward as ak
 
-file = uproot.open("newfile.root")
+file = uproot.open("newfile.root")#checking IDs for both the files
 tree = file["events"]
 
 # Load MCParticle PDG IDs
