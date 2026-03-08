@@ -2,7 +2,9 @@
 
 The output of the given simulation task is stored in **`newfile.root`**.
 
-For Task Specific code - yoo.py   For Proposal Code - trcheck.ipynb. 
+For Task Specific code -**`yoo.py`**. 
+
+For Proposal Code - **`trcheck.ipynb`**. 
 
 This root file has been provided so that user **does not need to be rerun heavy test**.
 ---
